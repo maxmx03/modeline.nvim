@@ -7,7 +7,8 @@ end
 
 local function default()
   local comps = {
-    -- [[%#ModeLineMode#%{v:lua.ml_mode()}%*]],
+    stl_format('Brand', ' '),
+    [[ %#ModeLineMode#%{v:lua.ml_mode()}%*]],
     " %{&fileencoding=='utf-8'||&fileencoding==''?'U':&fileencoding=='latin1'?'1':'-'}",
     "%{&encoding=='utf-8'?'U':''}",
     "%{&fileformat=='dos'?'\\\\':&fileformat=='mac'?'/':':'}",
