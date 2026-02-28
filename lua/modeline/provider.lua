@@ -107,11 +107,11 @@ function M.lsp()
 end
 
 function M.gitinfo()
-  local alias = { 'Head', 'plus', 'minus', 'delta' }
+  local alias = { 'Head', 'Add', 'Change', 'Delete' }
   return {
     stl = function()
       return coroutine.create(function(pieces, idx)
-        local signs = { 'Git:', '+', '~', '-' }
+        local signs = { ' ', '+', '~', '-' }
         local order = { 'head', 'added', 'changed', 'removed' }
 
         local ok, dict = pcall(api.nvim_buf_get_var, 0, 'gitsigns_status_dict')
@@ -134,7 +134,7 @@ function M.gitinfo()
           if i == 1 or (type(dict[order[i]]) == 'number' and dict[order[i]] > 0) then
             parts = ('%s %s'):format(
               parts,
-              ('%%#@diff.%s#%s%%*'):format(alias[i], signs[i] .. dict[order[i]])
+              ('%%#ModeLineGit%s#%s%%*'):format(alias[i], signs[i] .. dict[order[i]])
             )
           end
         end
